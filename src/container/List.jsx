@@ -10,14 +10,14 @@ import EditModal from '../components/EditModal'
 const List = () => {
     const dispatch = useDispatch()
 
-    const addList = (title) => {
-        dispatch(newListAction(title))  
-        console.log(title);
+    const addList = (element) => {
+        dispatch(newListAction(element))  
+        console.log(element);
     }
 
     const listArr = useSelector(state => state.list )
     
-
+    
 
     const [modals, setModals] = useState(false)
     const [task, setTask] = useState([])

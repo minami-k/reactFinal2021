@@ -7,20 +7,21 @@ import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 
 const Modals = ({show, cancel, issue, modals, toggle, save, addList}) => {
 
+    const [id, setId] = useState("")
     const [content, setContent] = useState("")
     const [title, setTitle] = useState("")
-    const [editing, setEditing] = useState(null)
-    const [editingText, setEditingText] = useState('')
+    
 
     const handleChange = (e) => {
-        setContent(e.target.value)
+        setContent(e.taget.value)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addList({ content, title })
-        setContent('')
+        addList({ title, content, id })
+        setId('')
         setTitle('')
+        setContent('')
     }
 
 
@@ -37,6 +38,7 @@ const Modals = ({show, cancel, issue, modals, toggle, save, addList}) => {
             id="outlined-basic" 
             label="Title" 
             variant="standard" 
+            name={title}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
 
@@ -47,14 +49,17 @@ const Modals = ({show, cancel, issue, modals, toggle, save, addList}) => {
             id="outlined-basic" 
             label="State" 
             variant="standard"
+            name='state'
             value={content}
             onChange={(e) => setContent(e.target.value)}
+
             /><br />
             <TextField 
             id="outlined-basic" 
             label="Url" 
             variant="standard"
-            
+            value={id}
+            onChange={(e) => setId(e.target.value)}
             /><br />
             <TextField 
             id="outlined-basic" 

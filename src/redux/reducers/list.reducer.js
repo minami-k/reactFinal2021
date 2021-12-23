@@ -3,8 +3,8 @@ import { NEW_LIST, UPDATE_LIST } from '../action/actions'
 
 const initState = {
     list: [ 
-    {id: uuidv4(), title: 'Task1', content:'Get pizza' },
-    {id: uuidv4(), title: 'Task2', content: 'Go for walk' }
+    {id: uuidv4(), title: 'Issue1', state:'Active' },
+    {id: uuidv4(), title: 'Issue2', state: 'Active' }
 ],
 
 }
@@ -14,17 +14,23 @@ const listReducer = (state = initState, action) => {
     switch (action.type){
         case NEW_LIST:
             action.payload.id = uuidv4()
-            action.payload.title = ''
-            return {
+          return {
                 ...state,
                 list: [...state.list, action.payload]
             };
         case UPDATE_LIST:
-            
+            const tempList = state.list.map(issue => {
+                if(issue.id === action.payload.id) {
+                    return {
+                        ...issue,
+                        list: [...state.list, action.payload]
+                    }
+                }
+                return issue;
+            })
             return {
                 ...state,
-                list: [...state.list, action.payload],
-                preList: state.preList.concat({list: [...state.list, action.payload]})
+                list:tempList
             };
         
 

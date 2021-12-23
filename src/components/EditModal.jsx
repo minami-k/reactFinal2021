@@ -25,6 +25,7 @@ const EditModal = ({toggle, modals, taskObj, editList }) => {
         e.preventDefault()
          editList({ title, state, url, date })
         setTitle('')
+        setState('')
    }
 
 

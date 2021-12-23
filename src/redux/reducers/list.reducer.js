@@ -19,15 +19,15 @@ const listReducer = (state = initState, action) => {
                 list: [...state.list, action.payload]
             };
         case UPDATE_LIST:
-            const tempList = state.list.map(issue => {
+            const tempList =  state.list.map((issue) => {
                 if(issue.id === action.payload.id) {
                     return {
                         ...issue,
-                        list: [...state.list, action.payload]
+                        list: [...state.list, action.payload.issue]
                     }
                 }
                 return issue;
-            })
+            }) 
             return {
                 ...state,
                 list:tempList
